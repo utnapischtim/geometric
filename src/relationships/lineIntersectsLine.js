@@ -25,7 +25,7 @@ export function lineIntersectsLine(lineA, lineB) {
   }
 }
 
-function sharePoint(lineA, lineB){
+export function sharePoint(lineA, lineB){
   let share = false;
   for (let i = 0; i < 2; i++){
     for (let j = 0; j < 2; j++){
