@@ -1,14 +1,14 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("polygonRegular() returns the expected default", function(test) {
-  var p = geometric.polygonRegular();
-  
+  const p = geometric.polygonRegular();
+
   test.deepEqual(p, [[0, 0], [15.196713713031848, 0], [7.598356856515927, -13.160740129524923]]);
   test.end();
 });
 
-tape("polygonRegular() returns some regular polygons", function(test){
+tape("polygonRegular() returns some regular polygons", function(test) {
   const p3 = geometric.polygonRegular(3, 1000, [100, 100]);
   test.deepEqual(p3, [[75.97188585865246, 113.87263816762606], [124.02811414134754, 113.87263816762606], [100, 72.2547236647479]]);
 

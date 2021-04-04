@@ -5,14 +5,14 @@ import { polygonCentroid } from "./polygonCentroid";
 
 // Scales a polygon by a scale factor (where 1 is the original size) from an origin point.
 // The origin defaults to the polygon's centroid.
-export function polygonScale(polygon, scale, origin){
-  if (!origin){
+export function polygonScale(polygon, scale, origin) {
+  if (!origin) {
     origin = polygonCentroid(polygon);
   }
 
   let p = [];
 
-  for (let i = 0, l = polygon.length; i < l; i++){
+  for (let i = 0, l = polygon.length; i < l; i++) {
     const v = polygon[i],
           d = lineLength([origin, v]),
           a = lineAngle([origin, v]);

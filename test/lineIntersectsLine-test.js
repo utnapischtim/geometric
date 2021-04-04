@@ -1,7 +1,7 @@
 const tape = require("tape"),
       geometric = require("../");
 
-tape("lineIntersectsLine(lineA, lineB) determines whether lineA intersects lineB", test => {
+tape("lineIntersectsLine(lineA, lineB) determines whether lineA intersects lineB", function(test) {
   const lineA = [[1, 4], [3, 4]],
         lineB = [[2, 1], [2, 7]],
         lineC = [[1, 8], [3, 8]];
@@ -13,7 +13,7 @@ tape("lineIntersectsLine(lineA, lineB) determines whether lineA intersects lineB
 });
 
 // See https://github.com/HarryStevens/geometric/issues/10
-tape("lineIntersectsLine(lineA, lineB) returns true if lineA and lineB share an endpoint", test => {
+tape("lineIntersectsLine(lineA, lineB) returns true if lineA and lineB share an endpoint", function(test) {
   const line1 = [
     [50.054358, 8.693184],
     [50.055604, 8.685873]

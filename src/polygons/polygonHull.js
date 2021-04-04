@@ -2,8 +2,10 @@ import { cross } from "../utils/crossProduct";
 
 // Caclulates the convex hull of a set of points.
 // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
-export function polygonHull(points){
-  if (points.length < 3) { return null; }
+export function polygonHull(points) {
+  if (points.length < 3) {
+    return null;
+  }
 
   const pointsCopy = points.slice().sort((a, b) => a[0] === b[0] ? a[1] - b[1] : a[0] - b[0]);
 

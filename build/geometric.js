@@ -321,12 +321,15 @@
     return p;
   }
 
-  // Determines if lineA intersects lineB. 
+  // Determines if lineA intersects lineB.
   // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
   // Returns a boolean.
   function lineIntersectsLine(lineA, lineB) {
     // First test to see if the lines share an endpoint
-    if (sharePoint(lineA, lineB)) return true;
+    if (sharePoint(lineA, lineB)) {
+      return true;
+    }
+
     var a = lineA[0][0],
         b = lineA[0][1],
         c = lineA[1][0],
@@ -348,7 +351,6 @@
       return 0 < lambda && lambda < 1 && 0 < gamma && gamma < 1;
     }
   }
-
   function sharePoint(lineA, lineB) {
     var share = false;
 
@@ -490,7 +492,7 @@
     var closed = close(polygonA);
 
     for (var i = 0, l = closed.length - 1; i < l; i++) {
-      var v0 = closed[i]; // Points test  
+      var v0 = closed[i]; // Points test
 
       if (!pointInPolygon(v0, polygonB)) {
         inside = false;
@@ -563,6 +565,7 @@
   exports.polygonScaleY = polygonScaleY;
   exports.polygonTranslate = polygonTranslate;
   exports.lineIntersectsLine = lineIntersectsLine;
+  exports.sharePoint = sharePoint;
   exports.lineIntersectsPolygon = lineIntersectsPolygon;
   exports.pointInPolygon = pointInPolygon;
   exports.pointOnPolygon = pointOnPolygon;

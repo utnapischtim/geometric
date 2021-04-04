@@ -1,5 +1,5 @@
 // Calculates the length of a polygon's perimeter. See https://github.com/d3/d3-polygon/blob/master/src/length.js
-export function polygonLength(vertices){
+export function polygonLength(vertices) {
   if (vertices.length === 0) {
     return 0;
   }

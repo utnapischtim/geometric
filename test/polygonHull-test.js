@@ -1,5 +1,5 @@
 const tape = require("tape"),
-    geometric = require("../");
+      geometric = require("../");
 
 tape("polygonHull(points) returns null if there are fewer than 3 input points", function(test) {
   test.equal(geometric.polygonHull([]), null);
@@ -9,8 +9,9 @@ tape("polygonHull(points) returns null if there are fewer than 3 input points", 
 });
 
 tape("polygonHull(points) calculates the convex hull of a set of points", function(test) {
-  const vertices = [[0, 0], [0, 2], [2, 2], [2, 0], [1, 1]];
-  const hull = geometric.polygonHull(vertices);
+  const vertices = [[0, 0], [0, 2], [2, 2], [2, 0], [1, 1]],
+        hull = geometric.polygonHull(vertices);
+
   test.equal(hull.length, 4);
   test.equal(hull[0][0], 0);
   test.equal(hull[0][1], 0);
@@ -24,9 +25,10 @@ tape("polygonHull(points) calculates the convex hull of a set of points", functi
 });
 
 tape("polygonHull(points) does not modify its input array", function(test) {
-  const input = [[0, 1], [1, 2], [0, 3]];
-  const clone = input.slice();
-  const hull = geometric.polygonHull(input);
+  const input = [[0, 1], [1, 2], [0, 3]],
+        clone = input.slice(),
+	hull = geometric.polygonHull(input);
+
   test.deepEqual(input, clone);
   test.end();
 });

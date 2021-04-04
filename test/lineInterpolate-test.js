@@ -1,9 +1,10 @@
 const tape = require("tape"),
-    geometric = require("../");
+      geometric = require("../");
 
-tape("lineInterpolate(line) returns points along a line", test => {
+tape("lineInterpolate(line) returns points along a line", function(test) {
   const line = [[236, 0], [708, 190]];
   const interpolator = geometric.lineInterpolate(line);
+
   test.deepEqual(interpolator(0), line[0]);
   test.deepEqual(interpolator(1), line[1]);
   test.deepEqual(interpolator(.1), [283.2, 19]);

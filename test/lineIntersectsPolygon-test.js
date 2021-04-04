@@ -1,5 +1,5 @@
-var tape = require("tape"),
-    geometric = require("../");
+const tape = require("tape"),
+      geometric = require("../");
 
 tape("lineIntersectsPolygon(line, polygon) determines whether a line intersects a polygon", function(test) {
   const polygon = [[5, 3], [10, 3], [10, 8], [5, 8]],
