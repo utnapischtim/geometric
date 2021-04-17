@@ -1,6 +1,6 @@
-export { lineAngle } from "./src/lines/lineAngle";
+export { lineAngle, segmentAngleSegment } from "./src/lines/lineAngle";
 export { lineInterpolate } from "./src/lines/lineInterpolate";
-export { lineLength } from "./src/lines/lineLength";
+export { lineLength, distance } from "./src/lines/lineLength";
 export { lineMidpoint } from "./src/lines/lineMidpoint";
 
 export { pointRotate } from "./src/points/pointRotate";
@@ -19,7 +19,7 @@ export { polygonScaleX } from "./src/polygons/polygonScaleX";
 export { polygonScaleY } from "./src/polygons/polygonScaleY";
 export { polygonTranslate } from "./src/polygons/polygonTranslate";
 
-export { lineIntersectsLine } from "./src/relationships/lineIntersectsLine";
+export { lineIntersectsLine, intersection } from "./src/relationships/lineIntersectsLine";
 export { sharePoint } from "./src/relationships/lineIntersectsLine";
 export { lineIntersectsPolygon } from "./src/relationships/lineIntersectsPolygon";
 export { pointInPolygon } from "./src/relationships/pointInPolygon";
@@ -27,6 +27,7 @@ export { pointOnPolygon } from "./src/relationships/pointOnPolygon";
 export { pointLeftofLine, pointRightofLine, pointOnLine, pointWithLine } from "./src/relationships/pointOnLine";
 export { polygonInPolygon } from "./src/relationships/polygonInPolygon";
 export { polygonIntersectsPolygon } from "./src/relationships/polygonIntersectsPolygon";
+export { angleBisector, isReflex, isConvex } from "./src/relationships/angle";
 
 export { angleReflect } from "./src/angles/angleReflect";
 export { angleToDegrees } from "./src/angles/angleToDegrees";
@@ -34,3 +35,5 @@ export { angleToRadians } from "./src/angles/angleToRadians";
 
 export { Point } from "./src/types/Point";
 export { Line } from "./src/types/Line";
+export { Vector } from "./src/types/Vector";
+export { Segment } from "./src/types/Segment";

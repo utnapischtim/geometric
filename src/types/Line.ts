@@ -10,7 +10,6 @@ export class Line {
     }
 
     public reverse(): Line {
-        [this.s, this.t] = [this.t, this.s];
-        return this;
+        return new Line(this.t, this.s);
     }
 }

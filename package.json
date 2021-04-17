@@ -9,6 +9,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
+    "watch": "tsc -w",
     "test": "tape -r ts-node/register test/**/*-test.ts",
     "prepublish": "npm run test && uglifyjs build/geometric.js -c -m -o build/geometric.min.js",
     "postpublish": "zip -j build/geometric.zip -- LICENSE README.md build/geometric.js build/geometric.min.js",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@types/node": "^14.14.37",
     "babel": "^6.23.0",
     "package-preamble": "0.1",
     "prettier": "^2.2.1",
@@ -48,6 +50,6 @@
   },
   "homepage": "https://github.com/HarryStevens/geometric#readme",
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ]
 }
