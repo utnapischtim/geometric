@@ -9,17 +9,15 @@ export function lineIntersectsLine(lineA: Line, lineB: Line): boolean {
         return true;
     }
 
-    const a = lineA.s.x,
-          b = lineA.s.y,
-          c = lineA.t.x,
-          d = lineA.t.y,
-          p = lineB.s.x,
-          q = lineB.s.y,
-          r = lineB.t.x,
-          s = lineB.t.y,
-          det,
-          gamma,
-          lambda;
+    const a: number = lineA.s.x,
+          b: number = lineA.s.y,
+          c: number = lineA.t.x,
+          d: number = lineA.t.y,
+          p: number = lineB.s.x,
+          q: number = lineB.s.y,
+          r: number = lineB.t.x,
+          s: number = lineB.t.y;
+    let det: number, gamma: number, lambda: number;
 
     det = (c - a) * (s - q) - (r - p) * (d - b);
     if (det === 0) {

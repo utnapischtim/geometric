@@ -7,7 +7,8 @@ export function close(polygon: Point[]) {
 
 // Tests whether a polygon is closed
 export function isClosed(polygon: Point[]): boolean {
-    const first = polygon[0];
-    const last = polygon[polygon.length - 1];
-    return first.x === last.x && first.y === last.y;
+    const first: Point = polygon[0],
+          last: Point = polygon[polygon.length - 1];
+
+    return first.equal(last);
 }
