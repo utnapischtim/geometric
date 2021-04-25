@@ -1,11 +1,12 @@
 import { close } from "../utils/closePolygon";
 import { lineIntersectsLine } from "./lineIntersectsLine";
 import { pointOnLine } from "../relationships/pointOnLine";
-import { Point, Line } from "../types";
+import { Line } from "../types";
+import type { ILine, IPoint } from "../interfaces";
 
 // Determines whether a line intersects a polygon.
 // Returns a boolean.
-export function lineIntersectsPolygon(line: Line, polygon: Point[]): boolean {
+export function lineIntersectsPolygon(line: ILine, polygon: IPoint[]): boolean {
     let intersects = false;
     const closed = close(polygon);
 

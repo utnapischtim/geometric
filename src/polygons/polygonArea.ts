@@ -1,12 +1,13 @@
-import { Point } from "../types";
+import type { IPoint } from "../interfaces";
 
 // Calculates the area of a polygon.
-export function polygonArea(vertices: Point[], signed: boolean = false): number {
+export function polygonArea(vertices: IPoint[], signed: boolean = false): number {
     let a: number = 0;
+    const size: number = vertices.length;
 
-    for (let i = 0, l = vertices.length; i < l; i++) {
-        const v0 = vertices[i],
-        v1 = vertices[i === l - 1 ? 0 : i + 1];
+    for (let i = 0; i < size; i++) {
+        const v0: IPoint = vertices[i];
+        const v1: IPoint = vertices[i === size - 1 ? 0 : i + 1];
 
         a += v0.x * v1.y;
         a -= v1.x * v0.y;

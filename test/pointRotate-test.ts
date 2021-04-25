@@ -1,7 +1,7 @@
-import * as tape from "tape";
-import { pointRotate, Point } from "../";
+import tape from "tape";
+import { pointRotate, Point } from "../src/";
 
-tape("pointRotate(point, angle, origin) rotates a point by an angle in degrees around an origin", function(test) {
+tape("pointRotate(point, angle, origin) rotates a point by an angle in degrees around an origin", (test: any) => {
     test.equal(pointRotate(new Point(1, 1), 90).xRound(), -1);
     test.equal(pointRotate(new Point(1, 1), 90).yRound(), 1);
     test.equal(pointRotate(new Point(1, 1), 180).xRound(), -1);

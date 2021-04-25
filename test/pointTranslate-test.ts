@@ -1,7 +1,7 @@
-import * as tape from "tape";
-import { pointTranslate, Point } from "../";
+import tape from "tape";
+import { pointTranslate, Point } from "../src/";
 
-tape("pointTranslate(point, angle, distance) translates a point by an angle in degrees and distance", function(test) {
+tape("pointTranslate(point, angle, distance) translates a point by an angle in degrees and distance", (test: any) => {
     test.equal(pointTranslate(new Point(0, 0), 0, 1).xRound(), 1);
     test.equal(pointTranslate(new Point(0, 0), 0, 1).yRound(), 0);
 

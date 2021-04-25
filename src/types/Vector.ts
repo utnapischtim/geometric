@@ -1,6 +1,6 @@
-import { Segment, Point } from "../types";
+import type { ISegment, IVector, IPoint } from "../interfaces";
 
-export class Vector {
+export class Vector implements IVector {
     public x: number;
     public y: number;
 
@@ -9,9 +9,9 @@ export class Vector {
         this.y = y;
     }
 
-    public static fromSegment(seg: Segment, normalize: boolean = false): Vector {
-        const xd: number = seg.t.x - seg.s.x,
-              yd: number = seg.t.y - seg.s.y;
+    public static fromSegment(seg: ISegment, normalize: boolean = false): IVector {
+        const xd: number = seg.t.x - seg.s.x;
+        const yd: number = seg.t.y - seg.s.y;
 
         const vec = new Vector(xd, yd);
 
@@ -32,21 +32,21 @@ export class Vector {
         this.y /= length
     }
 
-    public scale(factor: number): Vector {
+    public scale(factor: number): IVector {
         this.x *= factor;
         this.y *= factor;
         return this;
     }
 
-    public add(b: Vector): Vector {
+    public add(b: IVector): IVector {
         return new Vector(this.x + b.x, this.y + b.y);
     }
 
-    public invert(): Vector {
+    public invert(): IVector {
         return new Vector(this.x * -1, this.y * -1);
     }
 
-    public dot(b: Vector): number {
+    public dot(b: IVector): number {
         return this.x * b.x + this.y * b.y;
     }
 
@@ -54,11 +54,11 @@ export class Vector {
         return this.length();
     }
 
-    public cross(b: Vector | Point): number {
+    public cross(b: IVector | IPoint): number {
         return this.x * b.y - b.x * this.y;
     }
 
-    public mul(b: number): Vector {
+    public mul(b: number): IVector {
         return new Vector(this.x * b, this.y * b);
     }
 }

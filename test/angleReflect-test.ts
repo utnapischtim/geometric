@@ -1,7 +1,7 @@
-import * as tape from "tape";
-import { angleReflect } from "../";
+import tape from "tape";
+import { angleReflect } from "../src/";
 
-tape("angleReflect(incidenceAngle, surfaceAngle) returns the angle of reflection.", function(test: any) {
+tape("angleReflect(incidenceAngle, surfaceAngle) returns the angle of reflection.", (test: any) => {
   test.equal(angleReflect(0, 90), 180);
   test.equal(angleReflect(0, 45), 90);
   test.equal(angleReflect(180, 90), 0);

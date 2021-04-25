@@ -1,25 +1,27 @@
-import { Line, Segment, Vector, Point } from "../types";
+import { Line, Vector, Segment } from "../types";
+import type { ILine, ISegment, IVector, IPoint } from "../interfaces";
 
 // Determines if lineA intersects lineB.
 // See: https://stackoverflow.com/questions/9043805/test-if-two-lines-intersect-javascript-function/24392281#24392281
 // Returns a boolean.
-export function lineIntersectsLine(lineA: Line, lineB: Line): boolean {
+export function lineIntersectsLine(lineA: ILine, lineB: ILine): boolean {
     // First test to see if the lines share an endpoint
     if (sharePoint(lineA, lineB)) {
         return true;
     }
 
-    const a: number = lineA.s.x,
-          b: number = lineA.s.y,
-          c: number = lineA.t.x,
-          d: number = lineA.t.y,
-          p: number = lineB.s.x,
-          q: number = lineB.s.y,
-          r: number = lineB.t.x,
-          s: number = lineB.t.y;
-    let det: number, gamma: number, lambda: number;
+    const a: number = lineA.s.x;
+    const b: number = lineA.s.y;
+    const c: number = lineA.t.x;
+    const d: number = lineA.t.y;
+    const p: number = lineB.s.x;
+    const q: number = lineB.s.y;
+    const r: number = lineB.t.x;
+    const s: number = lineB.t.y;
+    let gamma: number;
+    let lambda: number;
 
-    det = (c - a) * (s - q) - (r - p) * (d - b);
+    const det: number = (c - a) * (s - q) - (r - p) * (d - b);
     if (det === 0) {
         return false;
     } else {
@@ -29,51 +31,51 @@ export function lineIntersectsLine(lineA: Line, lineB: Line): boolean {
     }
 }
 
-export function sharePoint(lineA: Line, lineB: Line): boolean {
+export function sharePoint(lineA: ILine, lineB: ILine): boolean {
     return equal(lineA.s, lineB.s) || equal(lineA.s, lineB.t) || equal(lineA.t, lineB.s) || equal(lineA.t, lineB.t);
 }
 
-function equal(pointA: Point, pointB: Point) {
+function equal(pointA: IPoint, pointB: IPoint) {
     return pointA.equal(pointB);
 }
 
-function segmentIntersectsSegment(segA: Segment, segB: Segment) {
+function segmentIntersectsSegment(segA: ISegment, segB: ISegment) {
     return lineIntersectsLine(new Line(segA.s, segA.t), new Line(segB.s, segB.t));
 }
 
-export function isIntersection(segA: Segment | Line, segB: Segment | Line): boolean {
+export function isIntersection(segA: ISegment | Line, segB: ISegment | Line): boolean {
     if (segA instanceof Segment && segB instanceof Segment)
         return segmentIntersectsSegment(segA, segB);
     else if (segA instanceof Line && segB instanceof Line)
         return lineIntersectsLine(segA, segB);
     else
-        console.log("not supported types in intersection");
+        throw new Error("not supported types in intersection");
 
     return false;
 }
 
-function intersectSegment(segA: Segment, segB: Segment): Point {
-    const r: Vector = Vector.fromSegment(segA),
-          s: Vector = Vector.fromSegment(segB);
+function intersectSegment(segA: ISegment, segB: ISegment): IPoint {
+    const r: IVector = Vector.fromSegment(segA);
+    const s: IVector = Vector.fromSegment(segB);
 
-    const p: Point = segA.s,
-          q: Point = segB.s;
+    const p: IPoint = segA.s;
+    const q: IPoint = segB.s;
 
-    let intersection: Point;
+    let intersectionPoint: IPoint;
 
-    const r_cross_s: number = r.cross(s),
-          q_minus_p_cross_r: number = q.minus(p).cross(r);
+    const rCrossS: number = r.cross(s);
+    const qMinusPCrossR: number = q.minus(p).cross(r);
 
-    if (r_cross_s == 0 && q_minus_p_cross_r == 0) {
+    if (rCrossS === 0 && qMinusPCrossR === 0) {
         throw new Error("segA and segB are collinear");
-    } else if (r_cross_s == 0 && q_minus_p_cross_r != 0) {
+    } else if (rCrossS === 0 && qMinusPCrossR !== 0) {
         throw new Error("segA and segB are parallel and non-intersecting")
-    } else if (r_cross_s != 0) {
-        const t: number = (q.minus(p).cross(s)) / (r.cross(s)),
-              u: number = (p.minus(q).cross(r)) / (s.cross(r));
+    } else if (rCrossS !== 0) {
+        const t: number = (q.minus(p).cross(s)) / (r.cross(s));
+        const u: number = (p.minus(q).cross(r)) / (s.cross(r));
 
         if (0 <= t && t <= 1 && 0 <= u && u <= 1) {
-            intersection = q.add(s.mul(u));
+            intersectionPoint = q.add(s.mul(u));
         } else {
             throw new Error("segA and segB have no intersection");
         }
@@ -81,20 +83,20 @@ function intersectSegment(segA: Segment, segB: Segment): Point {
         throw new Error("segA and segB are not parallel but do not intersect");
     }
 
-    return intersection;
+    return intersectionPoint;
 
 }
 
-function intersectLine(lineA: Line, lineB: Line): Point | undefined {
-    alert("intersectLine not yet implemented");
-    return;
-}
+// function intersectLine(lineA: Line, lineB: Line): Point | undefined {
+//     alert("intersectLine not yet implemented");
+//     return;
+// }
 
-export function intersection(segA: Segment | Line, segB: Segment | Line): Point | undefined {
+export function intersection(segA: ISegment | ILine, segB: ISegment | ILine): IPoint | undefined {
     if (segA instanceof Segment && segB instanceof Segment)
         return intersectSegment(segA, segB);
-    else if (segA instanceof Line && segB instanceof Line)
-        return intersectLine(segA, segB);
+    // else if (segA instanceof Line && segB instanceof Line)
+    //     return intersectLine(segA, segB);
     else
         throw new Error("intersection lacks support of given type");
 

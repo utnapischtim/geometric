@@ -1,7 +1,7 @@
-import * as tape from "tape";
-import { polygonBounds, Point } from "../";
+import tape from "tape";
+import { polygonBounds, Point } from "../src/";
 
-tape("polygonBounds(polygon) returns null if the polygon has fewer than 3 points", function(test) {
+tape("polygonBounds(polygon) returns null if the polygon has fewer than 3 points", (test: any) => {
     test.equal(polygonBounds([]), null);
     test.equal(polygonBounds([new Point(0, 1)]), null);
     test.equal(polygonBounds([new Point(0, 1), new Point(1, 2)]), null);
@@ -9,9 +9,9 @@ tape("polygonBounds(polygon) returns null if the polygon has fewer than 3 points
     test.end();
 });
 
-tape("polygonBounds(polygon) calculates the bounds a polygon", function(test) {
-    const polygon = [new Point(110, 40), new Point(210, 10), new Point(310, 40), new Point(360, 140), new Point(310, 240), new Point(210, 270), new Point(110, 240), new Point(60, 140)],
-    bounds = polygonBounds(polygon);
+tape("polygonBounds(polygon) calculates the bounds a polygon", (test: any) => {
+    const polygon = [new Point(110, 40), new Point(210, 10), new Point(310, 40), new Point(360, 140), new Point(310, 240), new Point(210, 270), new Point(110, 240), new Point(60, 140)];
+    const bounds = polygonBounds(polygon);
 
     test.equal(bounds[0].x, 60);
     test.equal(bounds[0].y, 10);

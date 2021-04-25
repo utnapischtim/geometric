@@ -37,3 +37,8 @@ export { Point } from "./types/Point";
 export { Line } from "./types/Line";
 export { Vector } from "./types/Vector";
 export { Segment } from "./types/Segment";
+
+export { close } from "./utils/closePolygon";
+export { cross } from "./utils/crossProduct";
+
+export type { IVector, ISegment, ILine, IPoint } from "./interfaces";

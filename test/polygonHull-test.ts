@@ -1,14 +1,14 @@
-import * as tape from "tape";
-import { polygonHull, Point } from "../";
+import tape from "tape";
+import { polygonHull, Point } from "../src/";
 
-tape("polygonHull(points) returns null if there are fewer than 3 input points", function(test) {
+tape("polygonHull(points) returns null if there are fewer than 3 input points", (test: any) => {
     test.equal(polygonHull([]), null);
     test.equal(polygonHull([new Point(0, 1)]), null);
     test.equal(polygonHull([new Point(0, 1), new Point(1, 2)]), null);
     test.end();
 });
 
-tape("polygonHull(points) calculates the convex hull of a set of points", function(test) {
+tape("polygonHull(points) calculates the convex hull of a set of points", (test: any) => {
     const vertices = [new Point(0, 0), new Point(0, 2), new Point(2, 2), new Point(2, 0), new Point(1, 1)];
     const hull = polygonHull(vertices);
 
@@ -24,11 +24,10 @@ tape("polygonHull(points) calculates the convex hull of a set of points", functi
     test.end();
 });
 
-tape("polygonHull(points) does not modify its input array", function(test) {
+tape("polygonHull(points) does not modify its input array", (test: any) => {
     const input = [new Point(0, 1), new Point(1, 2), new Point(0, 3)];
-    const clone = input.slice();
     const hull = polygonHull(input);
 
-    test.deepEqual(input, clone);
+    test.deepEqual(input, hull);
     test.end();
 });

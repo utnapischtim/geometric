@@ -1,7 +1,7 @@
-import * as tape from "tape";
-import { polygonScale, Point } from "../";
+import tape from "tape";
+import { polygonScale, Point } from "../src/";
 
-tape("polygonScale(polygon, scaleFactor, origin) scales a polygon by a scale factor from an origin point.", function(test) {
+tape("polygonScale(polygon, scaleFactor, origin) scales a polygon by a scale factor from an origin point.", (test: any) => {
     const polygon = [new Point(738.5, 168.5), new Point(838.5, 138.5), new Point(938.5, 168.5), new Point(988.5, 268.5), new Point(938.5, 368.5), new Point(838.5, 398.5), new Point(738.5, 368.5), new Point(688.5, 268.5)];
     const polygonDoubled = polygonScale(polygon, 2);
 

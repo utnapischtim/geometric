@@ -1,13 +1,14 @@
 import { close } from "../utils/closePolygon";
 import { lineIntersectsPolygon } from "./lineIntersectsPolygon";
 import { pointOnPolygon } from "./pointOnPolygon";
-import { Line, Point } from "../types";
+import { Line } from "../types";
+import type { IPoint } from "../interfaces";
 
 // Determines whether a polygon intersects but is not contained by another polygon.
 // Polygons are represented as an array of vertices, each of which is an array of two numbers,
 // where the first number represents its x-coordinate and the second its y-coordinate.
 // Returns a boolean.
-export function polygonIntersectsPolygon(polygonA: Point[], polygonB: Point[]): boolean {
+export function polygonIntersectsPolygon(polygonA: IPoint[], polygonB: IPoint[]): boolean {
     let intersects = false;
     let onCount = 0;
     const closed = close(polygonA);

@@ -1,7 +1,7 @@
-import * as tape from "tape";
-import { polygonMean, Point } from "../";
+import tape from "tape";
+import { polygonMean, Point } from "../src/";
 
-tape("polygonMean(p) calculates the arithmetic mean of a polygon's vertices", function(test) {
+tape("polygonMean(p) calculates the arithmetic mean of a polygon's vertices", (test: any) => {
     const mc0 = polygonMean([new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(0, 1)]);
     const mc1 = polygonMean([new Point(0, 0), new Point(2, 0), new Point(2, 2), new Point(0, 2)]);
 

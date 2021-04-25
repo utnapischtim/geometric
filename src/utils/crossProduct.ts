@@ -1,8 +1,8 @@
-import { Point } from "../types";
+import type { IPoint } from "../interfaces";
 
 // See https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#JavaScript
 // and https://math.stackexchange.com/questions/274712/calculate-on-which-side-of-a-straight-line-is-a-given-point-located
-export function cross(a: Point, b: Point, o: Point): number {
+export function cross(a: IPoint, b: IPoint, o: IPoint): number {
     return (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
 }
 

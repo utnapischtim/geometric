@@ -1,6 +1,7 @@
 import { Vector } from "./Vector";
+import type { IPoint, IVector } from "../interfaces";
 
-export class Point {
+export class Point implements IPoint {
     public x: number;
     public y: number;
 
@@ -9,11 +10,11 @@ export class Point {
         this.y = y;
     }
 
-    public static fromArray(a: Array<number>) {
+    public static fromArray(a: number[]) {
         return new this(a[0], a[1]);
     }
 
-    public toArray(): Array<number> {
+    public toArray(): number[] {
         return [this.x, this.y];
     }
 
@@ -25,23 +26,23 @@ export class Point {
         return Math.round(this.y);
     }
 
-    public add(v: Vector | Point): Point {
+    public add(v: IVector | IPoint): IPoint {
         return new Point(this.x + v.x, this.y + v.y);
     }
 
-    public minus(b: Point): Vector {
+    public minus(b: IPoint): IVector {
         return new Vector(this.x - b.x, this.y - b.y);
     }
 
-    public clone(): Point {
+    public clone(): IPoint {
         return new Point(this.x, this.y);
     }
 
-    public equal(b: Point, epsilon: number = 0.0000000001): boolean {
+    public equal(b: IPoint, epsilon: number = 0.0000000001): boolean {
         return Math.abs(this.x - b.x) < epsilon && Math.abs(this.y - b.y) < epsilon;
     }
 
-    public notEqual(b: Point): boolean {
+    public notEqual(b: IPoint): boolean {
         return !this.equal(b);
     }
 }

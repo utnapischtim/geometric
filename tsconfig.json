@@ -1,13 +1,14 @@
 {
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "**/__tests__/*"],
 
   "compilerOptions": {
     "declaration": true,
-    "module": "esnext",
-    "target": "es2015",
+    "module": "commonjs",
+    "target": "es2017",
     "outDir": "./dist",
     "moduleResolution": "node",
+    "sourceMap": true,
 
     /* Strict Type-Checking Options */
     "strict": true,                           /* Enable all strict type-checking options. */
@@ -23,6 +24,13 @@
     "noUnusedLocals": true,                   /* Report errors on unused locals. */
     "noUnusedParameters": true,               /* Report errors on unused parameters. */
     "noImplicitReturns": true,                /* Report error when not all code paths in function return a value. */
-    "noFallthroughCasesInSwitch": true        /* Report errors for fallthrough cases in switch statement. */
+    "noFallthroughCasesInSwitch": true,       /* Report errors for fallthrough cases in switch statement. */
+
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }

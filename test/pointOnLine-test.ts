@@ -1,10 +1,10 @@
-import * as tape from "tape";
-import { pointLeftofLine, pointRightofLine, pointOnLine, pointWithLine, Point, Line } from "../";
+import tape from "tape";
+import { pointLeftofLine, pointRightofLine, pointOnLine, pointWithLine, Point, Line } from "../src/";
 
 
 const line = new Line(new Point(1, 0), new Point(1, 2));
 
-tape("pointLeftofLine(point, line) determines whether a point is to the left of a line", function(test) {
+tape("pointLeftofLine(point, line) determines whether a point is to the left of a line", (test: any) => {
     test.equal(pointLeftofLine(new Point(0, 1), line), true);
     test.equal(pointLeftofLine(new Point(1, 1), line), false);
     test.equal(pointLeftofLine(new Point(2, 1), line), false);
@@ -14,7 +14,7 @@ tape("pointLeftofLine(point, line) determines whether a point is to the left of 
     test.end();
 });
 
-tape("pointRightofLine(point, line) determines whether a point is to the right of a line", function(test) {
+tape("pointRightofLine(point, line) determines whether a point is to the right of a line", (test: any) => {
     test.equal(pointRightofLine(new Point(0, 1), line), false);
     test.equal(pointRightofLine(new Point(1, 1), line), false);
     test.equal(pointRightofLine(new Point(2, 1), line), true);
@@ -25,7 +25,7 @@ tape("pointRightofLine(point, line) determines whether a point is to the right o
     test.end();
 });
 
-tape("pointOnLine(point, line) determines whether a point is collinear with a line and is also on the line segment", function(test) {
+tape("pointOnLine(point, line) determines whether a point is collinear with a line and is also on the line segment", (test: any) => {
     test.equal(pointOnLine(new Point(0, 1), line), false);
     test.equal(pointOnLine(new Point(1, 1), line), true);
     test.equal(pointOnLine(new Point(2, 1), line), false);
@@ -36,7 +36,7 @@ tape("pointOnLine(point, line) determines whether a point is collinear with a li
     test.end();
 });
 
-tape("pointWithLine(point, line) determines whether a point is collinear with a line", function(test) {
+tape("pointWithLine(point, line) determines whether a point is collinear with a line", (test: any) => {
     test.equal(pointWithLine(new Point(0, 1), line), false);
     test.equal(pointWithLine(new Point(1, 1), line), true);
     test.equal(pointWithLine(new Point(2, 1), line), false);
@@ -47,7 +47,7 @@ tape("pointWithLine(point, line) determines whether a point is collinear with a 
     test.end();
 });
 
-tape("pointWithLine takes an epsilon test", function(test){
+tape("pointWithLine takes an epsilon test", (test: any) => {
     // See https://github.com/HarryStevens/geometric/issues/19
     const relationships = [{
         "point": new Point(-50.94850158691406,-3.027209166609623),

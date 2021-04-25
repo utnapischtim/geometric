@@ -1,14 +1,14 @@
-import * as tape from "tape";
-import { polygonRegular, Point } from "../";
+import tape from "tape";
+import { polygonRegular, Point } from "../src/";
 
-tape("polygonRegular() returns the expected default", function(test) {
+tape("polygonRegular() returns the expected default", (test: any) => {
     const p = polygonRegular();
 
     test.deepEqual(p, [new Point(0, 0), new Point(15.196713713031848, 0), new Point(7.598356856515927, -13.160740129524923)]);
     test.end();
 });
 
-tape("polygonRegular() returns some regular polygons", function(test) {
+tape("polygonRegular() returns some regular polygons", (test: any) => {
     const p3 = polygonRegular(3, 1000, new Point(100, 100));
     test.deepEqual(p3, [new Point(75.97188585865246, 113.87263816762606), new Point(124.02811414134754, 113.87263816762606), new Point(100, 72.2547236647479)]);
 

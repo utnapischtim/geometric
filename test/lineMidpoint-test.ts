@@ -1,7 +1,7 @@
-import * as tape from "tape";
-import { lineMidpoint, Line, Point } from "../";
+import tape from "tape";
+import { lineMidpoint, Line, Point } from "../src/";
 
-tape("lineMidpoint(line) calculates the midpoint of a line segment", function(test) {
+tape("lineMidpoint(line) calculates the midpoint of a line segment", (test: any) => {
     test.equal(lineMidpoint(new Line(new Point(0, 0), new Point(0, 1))).x, 0);
     test.equal(lineMidpoint(new Line(new Point(0, 0), new Point(0, 1))).y, .5);
     test.equal(lineMidpoint(new Line(new Point(0, 0), new Point(0, -1))).x, 0);

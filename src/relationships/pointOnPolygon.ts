@@ -1,10 +1,11 @@
 import { close } from "../utils/closePolygon";
 import { pointOnLine } from "./pointOnLine";
-import { Point, Line } from "../types";
+import { Line } from "../types";
+import type { IPoint } from "../interfaces";
 
 // Determines whether a point is located on one of the edges of a polygon.
 // Returns a boolean.
-export function pointOnPolygon(point: Point, polygon: Point[], epsilon: number = 0): boolean {
+export function pointOnPolygon(point: IPoint, polygon: IPoint[], epsilon: number = 0): boolean {
     let on = false;
     const closed = close(polygon);
 

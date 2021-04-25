@@ -1,7 +1,7 @@
-import * as tape from "tape";
-import { polygonCentroid, Point } from "../";
+import tape from "tape";
+import { polygonCentroid, Point } from "../src/";
 
-tape("polygonCentroid(polygon) calculates the weighted centroid of a polygon", function(test) {
+tape("polygonCentroid(polygon) calculates the weighted centroid of a polygon", (test: any) => {
     const p0 = polygonCentroid([new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(0, 1)]);
     const p1 = polygonCentroid([new Point(0, 0), new Point(2, 0), new Point(2, 2), new Point(0, 2)]);
     const p2 = polygonCentroid([new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(0, 1), new Point(0, 0)]);

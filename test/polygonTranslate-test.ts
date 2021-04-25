@@ -1,9 +1,7 @@
-import * as tape from "tape";
-import { polygonTranslate, Point } from "../";
+import tape from "tape";
+import { polygonTranslate, Point } from "../src/";
 
-
-
-tape("polygonTranslate(polygon, angle, distance) translates a polygon by an angle in degrees and distance.", function(test) {
+tape("polygonTranslate(polygon, angle, distance) translates a polygon by an angle in degrees and distance.", (test: any) => {
     const myPolygon = [new Point(100, 100), new Point(150, 100), new Point(125, 125), new Point(150, 150), new Point(100, 150)];
     const newPolygon = polygonTranslate(myPolygon, 90, 100);
 

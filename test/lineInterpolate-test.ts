@@ -1,7 +1,7 @@
-import * as tape from "tape";
-import { lineInterpolate, Line, Point } from "../";
+import tape from "tape";
+import { lineInterpolate, Line, Point } from "../src/";
 
-tape("lineInterpolate(line) returns points along a line", function(test) {
+tape("lineInterpolate(line) returns points along a line", (test: any) => {
     const line = new Line(new Point(236, 0), new Point(708, 190));
     const interpolator = lineInterpolate(line);
 

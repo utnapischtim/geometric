@@ -1,20 +1,19 @@
 import { Point } from "../types";
+import type { IPoint } from "../interfaces";
 
 // Calculates the bounds of a polygon.
-export function polygonBounds(polygon: Point[]): any {
+export function polygonBounds(polygon: IPoint[]): any {
     if (polygon.length < 3) {
         return null;
     }
 
-    let xMin: number = Infinity,
-        xMax: number = -Infinity,
-        yMin: number = Infinity,
-        yMax: number = -Infinity,
-        found: boolean = false;
+    let xMin: number = Infinity;
+    let xMax: number = -Infinity;
+    let yMin: number = Infinity;
+    let yMax: number = -Infinity;
+    let found: boolean = false;
 
-    for (let i = 0, l = polygon.length; i < l; i++) {
-        const p = polygon[i];
-
+    for (const p of polygon) {
         if (isFinite(p.x) && isFinite(p.y)) {
             found = true;
             if (p.x < xMin) xMin = p.x;
