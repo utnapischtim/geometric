@@ -9,7 +9,6 @@
     "test": "tape -r ts-node/register test/**/*-test.ts",
     "prepublish": "npm run test && uglifyjs build/geometric.js -c -m -o build/geometric.min.js",
     "postpublish": "zip -j build/geometric.zip -- LICENSE README.md build/geometric.js build/geometric.min.js",
-    "postinstall": "tsc --project ./tsconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
