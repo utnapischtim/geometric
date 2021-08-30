@@ -4,7 +4,7 @@
   "description": "A JavaScript library with geometric functions.",
   "module": "index",
   "scripts": {
-    "build": "tsc --project ./tsconfig.json && cp dist/index.js index.js && sed -i -e 's|./|./dist/|g' index.js",
+    "build": "tsc --project ./tsconfig.json && cp dist/index.js index.js && sed -i -e 's|[.]/|./dist/|g' index.js",
     "watch": "tsc -w",
     "test": "tape -r ts-node/register test/**/*-test.ts",
     "prepublish": "npm run test && uglifyjs build/geometric.js -c -m -o build/geometric.min.js",
